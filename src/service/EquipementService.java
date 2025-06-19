@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author DevJude
+ * @author TCHAMIE
  */
 public class EquipementService {
     private EquipementDao dao = new EquipementDao();
@@ -24,8 +24,8 @@ public class EquipementService {
        return dao.trouver(id_equipement);
     }
     
-    public void modifier(int id_equipement, String libelle,String description){
-        dao.modifier(id_equipement, libelle, description);
+    public void modifier(Equipement equipement){
+        dao.modifier(equipement);
     }
     
     public void supprimer(Equipement equipement) {

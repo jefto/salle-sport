@@ -8,13 +8,11 @@ package dao;
  *
  * @author DevJude
  */
-import entite.Client;
 import entite.Membre;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import util.Connexion;
@@ -25,7 +23,7 @@ public class MembreDao {
 
     public void ajouter(Membre membre) {
         Connection session = Connexion.getSessionV2();
-        String sql = "INSERT INTO Membre (dateInscription, id_client) VALUES (" +
+        String sql = "INSERT INTO Membre (dateinscription, id_client) VALUES (" +
                 "'" + membre.getDateInscription() + "', " +
                 membre.getClient().getId() + ");";
 
@@ -40,7 +38,7 @@ public class MembreDao {
     public Membre trouver(int id) {
         Membre membre = new Membre();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, dateInscription, id_client FROM Membre WHERE id = " + id + ";";
+        String sql = "SELECT id_membre, dateinscription, id_client FROM Membre WHERE id_membre = " + id + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -58,12 +56,12 @@ public class MembreDao {
         return membre;
     }
 
-    public void modifier(LocalDateTime date , Client client , int id_membre) {
+    public void modifier(Membre membre) {
         Connection session = Connexion.getSessionV2();
         String sql = "UPDATE Membre SET " +
-                "dateInscription = '" + date + "', " +
-                "id_client = " + client.getId() + " " +
-                "WHERE id = " + id_membre + ";";
+                "dateinscription = '" + membre.getDateInscription() + "', " +
+                "id_client = " + membre.getClient().getId() + " " +
+                "WHERE id_membre = " + membre.getId() + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -75,7 +73,7 @@ public class MembreDao {
 
     public void supprimer(int id) {
         Connection session = Connexion.getSessionV2();
-        String sql = "DELETE FROM Membre WHERE id = " + id + ";";
+        String sql = "DELETE FROM Membre WHERE id_membre = " + id + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -88,7 +86,7 @@ public class MembreDao {
     public List<Membre> listerTout() {
         List<Membre> liste = new ArrayList<>();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, dateInscription, id_client FROM Membre;";
+        String sql = "SELECT id_membre, dateinscription, id_client FROM Membre;";
 
         try {
             Statement statement = session.createStatement();

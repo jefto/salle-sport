@@ -28,8 +28,8 @@ public class AbonnementService {
         return abonnementDao.trouver(id);
     }
 
-    public void modifier(LocalDateTime DateFin ,LocalDateTime DateDebut ,TypeAbonnement typeAbonnement,Membre membre,int id_abonnement,Paiement paiement) {
-        abonnementDao.modifier(DateFin ,DateDebut ,typeAbonnement, membre,id_abonnement, paiement);
+    public void modifier(Abonnement abonnement) {
+        abonnementDao.modifier(abonnement);
     }
 
     public void supprimer(int id) {

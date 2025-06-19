@@ -5,14 +5,10 @@
 package dao;
 
 import entite.Abonnement;
-import entite.Membre;
-import entite.Paiement;
-import entite.TypeAbonnement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import util.Connexion;
@@ -30,7 +26,7 @@ public class AbonnementDao {
 
     public void ajouter(Abonnement abonnement) {
         Connection session = Connexion.getSessionV2();
-        String sql = "INSERT INTO Abonnement (date_debut, dateFin, id_typeAbonnement, id_paiement, id_membre) VALUES (" +
+        String sql = "INSERT INTO Abonnement (date_debut, date_fin, type_abonnement_code, id_paiement, id_membre) VALUES (" +
                 "'" + abonnement.getDateDebut() + "', " +
                 "'" + abonnement.getDateFin() + "', " +
                 abonnement.getTypeAbonnement().getCode()+ ", " +
@@ -48,7 +44,7 @@ public class AbonnementDao {
     public Abonnement trouver(int id) {
         Abonnement abonnement = new Abonnement();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, date_debut, dateFin, id_type, id_paiement, id_membre FROM Abonnement WHERE id = " + id + ";";
+        String sql = "SELECT id, date_debut, date_fin, id_type, id_paiement, id_membre FROM Abonnement WHERE id = " + id + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -68,15 +64,15 @@ public class AbonnementDao {
         return abonnement;
     }
 
-    public void modifier(LocalDateTime DateFin ,LocalDateTime DateDebut ,TypeAbonnement typeAbonnement,Membre membre,int id_abonnement,Paiement paiement) {
+    public void modifier(Abonnement abonnement) {
         Connection session = Connexion.getSessionV2();
         String sql = "UPDATE Abonnement SET " +
-                "date_debut = '" + DateDebut + "', " +
-                "dateFin = '" + DateFin + "', " +
-                "id_type = " + typeAbonnement.getCode() + ", " +
-                "id_paiement = " + paiement.getId() + ", " +
-                "id_membre = " + membre.getId() + " " +
-                "WHERE id = " + id_abonnement + ";";
+                "date_debut = '" + abonnement.getDateDebut() + "', " +
+                "date_fin = '" + abonnement.getDateFin() + "', " +
+                "id_type = " + abonnement.getTypeAbonnement().getCode() + ", " +
+                "id_paiement = " + abonnement.getPaiement().getId() + ", " +
+                "id_membre = " + abonnement.getMembre().getId() + " " +
+                "WHERE id = " + abonnement.getId() + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -101,7 +97,7 @@ public class AbonnementDao {
     public List<Abonnement> listerTout() {
         List<Abonnement> liste = new ArrayList<>();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, date_debut, dateFin, id_type, id_paiement, id_membre FROM Abonnement;";
+        String sql = "SELECT id, date_debut, date_fin, id_type, id_paiement, id_membre FROM Abonnement;";
 
         try {
             Statement statement = session.createStatement();

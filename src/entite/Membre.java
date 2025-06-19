@@ -28,7 +28,10 @@ public class Membre {
         this.dateInscription = dateInscription;
         this.client = client;
     }
-    
+    @Override
+    public String toString() {
+        return String.valueOf(id); // ou ce que tu veux afficher dans la liste
+    }
     
     public int getId() {
         return id;

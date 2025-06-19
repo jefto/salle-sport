@@ -41,8 +41,8 @@ public class ClientDao {
     public Client trouver(int id) {
         Client client = new Client();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, nom, prenom, dateNaissance, email, id_membre, id_demandeInscription, id_ticket " +
-                     "FROM Client WHERE id = " + id + ";";
+        String sql = "SELECT id_client, nom, prenom, dateNaissance, email " +
+                     "FROM Client WHERE id_client = " + id + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -93,7 +93,7 @@ public class ClientDao {
     public List<Client> listerTout() {
         List<Client> liste = new ArrayList<>();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, nom, prenom, dateNaissance, email, id_membre, id_demandeInscription, id_ticket FROM Client;";
+        String sql = "SELECT id_client, nom, prenom, dateNaissance, email FROM Client;";
 
         try {
             Statement statement = session.createStatement();

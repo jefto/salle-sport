@@ -6,7 +6,7 @@ package service;
 
 /**
  *
- * @author DevJude
+ * @author TCHAMIE
  */
 import dao.SeanceDao;
 import entite.Seance;
@@ -20,7 +20,7 @@ public class SeanceService {
         seanceDao.ajouter(seance);
     }
 
-    public Seance rechercher(int id) {
+    public Seance trouver(int id) {
         return seanceDao.trouver(id);
     }
 

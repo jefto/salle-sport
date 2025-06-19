@@ -21,8 +21,9 @@ public class MoyenDePaiementDao {
     public void ajouter(MoyenDePaiement moyenDePaiement) {
         //Connection session =  Connexion.getInstance().getSession();
         Connection session = Connexion.getSessionV2();
-        String sql = "INSERT INTO Moyen_Paiements(code, libelle) "
+        String sql = "INSERT INTO moyen_paiements(id_moyenpaiement, code, libelle) "
                 + "VALUES("
+                + moyenDePaiement.getId() + "," 
                 + "'" + moyenDePaiement.getCode() + "',"
                 + "'" + moyenDePaiement.getLibelle() +"'"
                 + ");";
@@ -38,9 +39,11 @@ public class MoyenDePaiementDao {
     public void modifier(MoyenDePaiement moyenDePaiement) {
         
         Connection session = Connexion.getSessionV2();
-        String sql = "UPDATE Moyen_Paiements"
-                  +"SET"+"libelle = " + moyenDePaiement.getLibelle()+"," +
-                   "WHERE"+"code = "  + moyenDePaiement.getCode()+ ";" ;
+        String sql = "UPDATE moyen_paiements"
+                +"SET"
+                +"id_moyenpaiement = " + moyenDePaiement.getId() + "," 
+                +"libelle = " + moyenDePaiement.getLibelle()+"," 
+                +"WHERE"+"code = "  + moyenDePaiement.getCode()+ ";" ;
         
         try{
             Statement statement = session.createStatement();
@@ -53,7 +56,7 @@ public class MoyenDePaiementDao {
 
     public void supprimer(String code) {
         Connection session = Connexion.getSessionV2();
-        String sql ="DELETE FROM Moyen_Paiements WHERE code = '" + code + "' ;" ;
+        String sql ="DELETE FROM moyen_paiements WHERE code = '" + code + "' ;" ;
         
         try{
             Statement statement = session.createStatement();
@@ -66,7 +69,7 @@ public class MoyenDePaiementDao {
     public MoyenDePaiement trouver(String code) {
         MoyenDePaiement MoyenDePaiement_trouver = new MoyenDePaiement();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT * FROM Moyen_Paiements WHERE code = '" + code + "';";
+        String sql = "SELECT id_moyenpaiement, code, libelle FROM moyen_paiements WHERE code = '" + code + "';";
         
         try{
             Statement statement = session.createStatement();
@@ -84,7 +87,7 @@ public class MoyenDePaiementDao {
     public List<MoyenDePaiement> listerTous() {
         List<MoyenDePaiement> listes = new ArrayList<>();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT * FROM Moyen_Paiements;";      
+        String sql = "SELECT id_moyenpaiement, code, libelle FROM moyen_paiements;";      
         try{
             Statement statement = session.createStatement();
            ResultSet  resultSet =  statement.executeQuery(sql);

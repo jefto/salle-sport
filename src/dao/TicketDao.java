@@ -35,7 +35,7 @@ public class TicketDao {
     public Ticket trouver(int id) {
         Ticket ticket = new Ticket();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, nombre_seance, montant, id_client FROM Ticket WHERE id = " + id + ";";
+        String sql = "SELECT id_ticket, nombre_seance, montant, id_client FROM Ticket WHERE id_ticket = " + id + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -59,7 +59,7 @@ public class TicketDao {
                 "nombre_seance = " + ticket.getNombreDeSeance() + ", " +
                 "montant = " + ticket.getMontant() + ", " +
                 "id_client = " + ticket.getClient().getId() + " " +
-                "WHERE id = " + ticket.getId() + ";";
+                "WHERE id_ticket = " + ticket.getId() + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -71,7 +71,7 @@ public class TicketDao {
 
     public void supprimer(int id) {
         Connection session = Connexion.getSessionV2();
-        String sql = "DELETE FROM Ticket WHERE id = " + id + ";";
+        String sql = "DELETE FROM Ticket WHERE id_ticket = " + id + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -84,7 +84,7 @@ public class TicketDao {
     public List<Ticket> listerTout() {
         List<Ticket> liste = new ArrayList<>();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, nombre_seance, montant, id_client FROM Ticket;";
+        String sql = "SELECT id_ticket, nombre_seance, montant, id_client FROM Ticket;";
 
         try {
             Statement statement = session.createStatement();

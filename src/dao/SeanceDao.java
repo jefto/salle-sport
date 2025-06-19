@@ -19,7 +19,7 @@ public class SeanceDao {
 
     public void ajouter(Seance seance) {
         Connection session = Connexion.getSessionV2();
-        String sql = "INSERT INTO Seance (dateDebut, dateFin, id_membre, id_salle) VALUES (" +
+        String sql = "INSERT INTO seance (dateDebut, dateFin, id_membre, id_salle) VALUES (" +
                 "'" + seance.getDateDebut() + "', " +
                 "'" + seance.getDateFin() + "', " +
                 seance.getMembre().getId() + ", " +
@@ -36,7 +36,7 @@ public class SeanceDao {
     public Seance trouver(int id) {
         Seance seance = new Seance();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, dateDebut, dateFin, id_membre, id_salle FROM Seance WHERE id = " + id + ";";
+        String sql = "SELECT id_seance, dateDebut, dateFin, id_membre, id_salle FROM seance WHERE id_seance = " + id + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -45,8 +45,8 @@ public class SeanceDao {
                 seance.setId(rs.getInt(1));
                 seance.setDateDebut(rs.getTimestamp(2).toLocalDateTime());
                 seance.setDateFin(rs.getTimestamp(3).toLocalDateTime());
-                seance.setMembre(membreDao.trouver(rs.getInt(4)));
                 seance.setSalle(salleDao.trouver(rs.getInt(5)));
+                seance.setMembre(membreDao.trouver(rs.getInt(4)));
             }
         } catch (SQLException e) {
             System.out.println("Erreur : " + e.getMessage());
@@ -57,12 +57,12 @@ public class SeanceDao {
 
     public void modifier(Seance seance) {
         Connection session = Connexion.getSessionV2();
-        String sql = "UPDATE Seance SET " +
+        String sql = "UPDATE seance SET " +
                 "dateDebut = '" + seance.getDateDebut() + "', " +
                 "dateFin = '" + seance.getDateFin() + "', " +
-                "id_membre = " + seance.getMembre().getId() + ", " +
                 "id_salle = " + seance.getSalle().getId() + " " +
-                "WHERE id = " + seance.getId() + ";";
+                "id_membre = " + seance.getMembre().getId() + ", " +
+                "WHERE id_seance = " + seance.getId() + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -74,7 +74,7 @@ public class SeanceDao {
 
     public void supprimer(int id) {
         Connection session = Connexion.getSessionV2();
-        String sql = "DELETE FROM Seance WHERE id = " + id + ";";
+        String sql = "DELETE FROM seance WHERE id_seance = " + id + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -87,7 +87,7 @@ public class SeanceDao {
     public List<Seance> listerTout() {
         List<Seance> liste = new ArrayList<>();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, dateDebut, dateFin, id_membre, id_salle FROM Seance;";
+        String sql = "SELECT id_seance, dateDebut, dateFin, id_membre, id_salle FROM seance;";
 
         try {
             Statement statement = session.createStatement();

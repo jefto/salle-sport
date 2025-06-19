@@ -18,12 +18,12 @@ import javax.swing.JPanel;
 public class PathPanel_admin extends JPanel {
    private JButton abonnement           = new JButton("Abonnements"); 
    private JButton typeAbonnement       = new JButton("TypeAbonnements"); 
-   private JButton demandeInscription   = new JButton("DemandeInscriptions"); 
-   private JButton moyenPaiment         = new JButton("MoyenPaiements"); 
    private JButton salle                = new JButton("Salles"); 
-   private JButton seance               = new JButton("Seances"); 
    private JButton equipement           = new JButton("Equipements"); 
    private JButton horaire              = new JButton("Horaires"); 
+   private JButton seance               = new JButton("Seances"); 
+   private JButton demandeInscription   = new JButton("DemandeInscriptions"); 
+   private JButton moyenPaiment         = new JButton("MoyenPaiements"); 
    private JButton membre              = new JButton("Membres"); 
 
   private List<JButton> buttons = new ArrayList<>();

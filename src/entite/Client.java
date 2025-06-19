@@ -30,6 +30,11 @@ public class Client {
         this.email = email;
     }
     
+    @Override
+    public String toString() {
+        return id + " - " + nom + " " + prenom; // ou ce que tu veux afficher dans la liste
+    }
+    
     public int getId() {
         return id;
     }

@@ -13,9 +13,16 @@ import entite.MoyenDePaiement;
 import entite.Paiement;
 import entite.Salle;
 import entite.Seance;
+import dao.SeanceDao;
 import entite.Ticket;
 import entite.TypeAbonnement;
+import gui_admin.controller.EquipementController;
+import gui_admin.controller.MembreController;
+import gui_admin.controller.MoyenPaiementController;
+import gui_admin.controller.PaiementController;
+import gui_admin.controller.SeanceController;
 import gui_admin.controller.TypeAbonnementController;
+import gui_client.controller.TicketController;
 import java.time.LocalDateTime;
 import service.AbonnementService;
 import service.ClientService;
@@ -86,7 +93,7 @@ public class main {
         //membreService.ajouter(membre);
         
          
-        MoyenDePaiement moyenDePaiement = new MoyenDePaiement("001L", "Premier Paiement");
+        MoyenDePaiement moyenDePaiement = new MoyenDePaiement(1, "001L", "Premier Paiement");
         //moyenDePaiementService.ajouter(moyenDePaiement);
         
         Paiement paiement = new Paiement(1, LocalDateTime.now(), 100000, moyenDePaiement);
@@ -125,14 +132,12 @@ public class main {
         fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         fenetre.setVisible(true);*/
        
-        TypeAbonnementController controller = new TypeAbonnementController();
+        TicketController controller = new TicketController();
         //controller.edit();
-        TypeAbonnementService service =  new TypeAbonnementService();
-        TypeAbonnement entite = service.trouver("HEBDO");
+        TicketService service =  new TicketService();
+        Ticket entite = service.trouver(1);
         controller.modifier(entite);
-
-       
-        
+     
         
     }
 }

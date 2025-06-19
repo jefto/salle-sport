@@ -26,7 +26,10 @@ public class Salle {
         this.libelle = libelle;
         this.description = description;
     }
-    
+    @Override
+    public String toString() {
+        return id + " - " + libelle; // ou ce que tu veux afficher dans la liste
+    }
     
     public int getId() {
         return id;

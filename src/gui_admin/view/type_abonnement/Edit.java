@@ -63,6 +63,7 @@ public class Edit  extends GenericEdit{
     }
      private void initForm(TypeAbonnement entite){
         code.setText(entite.getCode());
+        code.setEditable(false);
         libelle.setText(entite.getLibelle());
         montant.setText(String.valueOf(entite.getMontant()));
     }

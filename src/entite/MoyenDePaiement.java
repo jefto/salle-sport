@@ -22,11 +22,15 @@ public class MoyenDePaiement {
         
     }
 
-    public MoyenDePaiement( String code, String libelle) {
+    public MoyenDePaiement(int id, String code, String libelle) {
+        this.id = id;
         this.code = code;
         this.libelle = libelle;
     }
-    
+    @Override
+    public String toString() {
+        return id + " - " + id + " " + libelle; // ou ce que tu veux afficher dans la liste
+    }
     
     public int getId() {
         return id;

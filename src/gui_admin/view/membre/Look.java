@@ -5,11 +5,14 @@
 package gui_admin.view.membre;
 
 import gui_admin.view.abonnement.*;
+import gui_util.ProPanel;
 
 /**
  *
  * @author DevJude
  */
-public class Look {
-    
+public class Look extends ProPanel{
+    public Look(){
+        super();
+    }
 }

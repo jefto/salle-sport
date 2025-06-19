@@ -4,19 +4,19 @@
  */
 package gui_admin.controller;
 
-import entite.Salle;
-import gui_admin.view.salle.Edit;
-import service.SalleService;
+import entite.Horaire;
+import gui_admin.view.horaire.Edit;
+import service.HoraireService;
 
 /**
  *
- * @author TCHAMIE
+ * @author DevJude
  */
-public class SalleController {
-    private SalleService service;
+public class HoraireController {
+    private HoraireService service;
 
-    public SalleController() {
-        service = new SalleService();
+    public HoraireController() {
+        service = new HoraireService();
     }
 
     public Edit ajouter() {
@@ -32,7 +32,7 @@ public class SalleController {
         return edit;
     }
 
-    public Edit modifier(Salle entite) {
+    public Edit modifier(Horaire entite) {
         Edit edit = new Edit(entite); // Remplissage avec les données existantes
         edit.afficher();
 

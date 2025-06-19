@@ -6,7 +6,7 @@ package entite;
 
 /**
  *
- * @author devJude
+ * @author TCHAMIE
  */
 public class Equipement {
     

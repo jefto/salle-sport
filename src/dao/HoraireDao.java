@@ -32,10 +32,10 @@ public class HoraireDao {
         }
     }
     
-    public void modifier(LocalDateTime debut , LocalDateTime fin, int id_horaire){
+    public void modifier(Horaire horaire){
         Connection session = Connexion.getSessionV2();
-        String sql = "UPDATE Horaire SET debut = '" +debut+"' , fin = '" + fin + "'"
-                +"WHERE id_horaire = " + id_horaire ; 
+        String sql = "UPDATE Horaire SET debut = '" +horaire.getDebut()+"' , fin = '" + horaire.getFin() + "'"
+                +"WHERE id_horaire = " + horaire.getId() ; 
         
         try{
             Statement statement = session.createStatement();
@@ -77,7 +77,7 @@ public class HoraireDao {
         return horaire;
     }
     
-    public List<Horaire> ListerTout(){
+    public List<Horaire> listerTout(){
         List<Horaire> horaires = new ArrayList<>();
         Connection session = Connexion.getSessionV2();
         String sql = " SELECT ALL FROM Horaire WHERE "; 

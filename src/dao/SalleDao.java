@@ -44,11 +44,11 @@ public class SalleDao {
         } 
     }
     
-    public void modifier(int id_salle, String libelle, String description ){
+    public void modifier(Salle salle ){
         Connection session = Connexion.getSessionV2();
-        String sql = " UPDATE Salle SET libelle = ' " + libelle + "'," 
-                +" description = ' " + description + "'"
-                +"WHERE id_salle = "+id_salle + ";";
+        String sql = " UPDATE Salle SET libelle = ' " + salle.getLibelle() + "'," 
+                +" description = ' " + salle.getDescription() + "'"
+                +"WHERE id_salle = "+salle.getId() + ";";
         
         try{
             Statement statement = session.createStatement();

@@ -22,19 +22,19 @@ public class MembreService {
         membreDao.ajouter(membre);
     }
 
-    public Membre rechercher(int id) {
+    public Membre trouver(int id) {
         return membreDao.trouver(id);
     }
 
-    public void modifier(LocalDateTime date , Client client , int id_membre) {
-        membreDao.modifier(date,client,id_membre);
+    public void modifier(Membre membre) {
+        membreDao.modifier(membre);
     }
 
     public void supprimer(int id) {
         membreDao.supprimer(id);
     }
 
-    public List<Membre> lister() {
+    public List<Membre> listerTous() {
         return membreDao.listerTout();
     }
 }

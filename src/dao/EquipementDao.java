@@ -61,12 +61,11 @@ public class EquipementDao {
         return equipement;
     }
     
-    public void modifier(int id_equipement, String libelle,String description){
-        Equipement equipement = this.trouver(id_equipement) ;
+    public void modifier(Equipement equipement){
         Connection session = Connexion.getSessionV2();
         String sql = "UPDATE  Equipement"
-                +"SET libelle = '" + libelle + "'"
-                +"SET description = " + description + "'"
+                +"SET libelle = '" + equipement.getLibelle() + "'"
+                +"SET description = " + equipement.getDescription() + "'"
                 +"WHERE id_equipement = " + equipement.getId();
         
         try{

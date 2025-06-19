@@ -23,15 +23,15 @@ public class SalleService {
       dao.suprimer(id_salle);
     }
     
-    public void modifier(int id_salle, String libelle, String description ){
-       dao.modifier(id_salle, libelle, description);
+    public void modifier(Salle salle ){
+       dao.modifier(salle);
     }
     
     public Salle trouver(int id_salle){
        return  dao.trouver(id_salle);
     }
     
-    public List<Salle> ListerTout(){
+    public List<Salle> listerTous(){
        return dao.ListerTout();
 }
 
