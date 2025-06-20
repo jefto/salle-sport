@@ -79,7 +79,7 @@ public class EquipementDao {
     public List<Equipement> listerTous() {
         List<Equipement> equipements = new ArrayList<>();
         Connection session = Connexion.getSessionV2();
-        String sql ="SELECT ALL FROM  Equipement";        
+        String sql ="SELECT * FROM  Equipement";        
         try{
             Statement statement = session.createStatement();
            ResultSet  resultSet =  statement.executeQuery(sql);
@@ -102,8 +102,7 @@ public class EquipementDao {
     
        public void supprimer(Equipement equipement) {
         Connection session = Connexion.getSessionV2();
-        String sql ="DELETE FROM TABLE Equipement"+
-                   "WHERE"+"code = " + equipement.getId()+ ";" ;
+        String sql ="DELETE FROM Equipement WHERE id_equipement = " + equipement.getId()+ ";" ;
         
         try{
             Statement statement = session.createStatement();

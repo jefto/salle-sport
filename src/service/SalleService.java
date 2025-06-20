@@ -33,6 +33,6 @@ public class SalleService {
     
     public List<Salle> listerTous(){
        return dao.ListerTout();
-}
+    }
 
 }

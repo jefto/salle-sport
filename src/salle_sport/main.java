@@ -16,14 +16,17 @@ import entite.Seance;
 import dao.SeanceDao;
 import entite.Ticket;
 import entite.TypeAbonnement;
+import gui_admin.AdminDashboard;
 import gui_admin.controller.EquipementController;
 import gui_admin.controller.MembreController;
 import gui_admin.controller.MoyenPaiementController;
 import gui_admin.controller.PaiementController;
+import gui_admin.controller.SalleController;
 import gui_admin.controller.SeanceController;
 import gui_admin.controller.TypeAbonnementController;
 import gui_client.controller.TicketController;
 import java.time.LocalDateTime;
+import javax.swing.SwingUtilities;
 import service.AbonnementService;
 import service.ClientService;
 import service.DemandeInscriptionService;
@@ -132,12 +135,17 @@ public class main {
         fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         fenetre.setVisible(true);*/
        
-        TicketController controller = new TicketController();
-        //controller.edit();
-        TicketService service =  new TicketService();
-        Ticket entite = service.trouver(1);
-        controller.modifier(entite);
+        SalleController controller = new SalleController();
      
+        //controller.edit();
+        SalleService service =  new SalleService();
+        //Salle entite = (Salle) service.listerTous();
+        //controller.modifier(entite);
+     
+        SwingUtilities.invokeLater(() -> {
+            AdminDashboard dashboard = new AdminDashboard();
+            dashboard.setVisible(true);
+        });
         
     }
 }

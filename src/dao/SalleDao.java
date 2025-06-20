@@ -34,7 +34,7 @@ public class SalleDao {
     
     public void suprimer(int id_salle){
                 Connection session = Connexion.getSessionV2();
-        String sql = " DELETE  Salle WHERE id_salle = " + id_salle;
+        String sql = " DELETE FROM Salle WHERE id_salle = " + id_salle;
         
         try{
             Statement statement = session.createStatement();
@@ -61,7 +61,7 @@ public class SalleDao {
     public Salle trouver(int id_salle){
         Salle salle = new Salle();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT ALL FROM  Salle WHERE id_salle =  "+ id_salle;
+        String sql = "SELECT * FROM  Salle WHERE id_salle =  "+ id_salle;
         
         try{
             Statement statement = session.createStatement();
@@ -81,7 +81,7 @@ public class SalleDao {
     public List<Salle> ListerTout(){
             List<Salle> salles = new ArrayList<>();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT ALL FROM  Salle ";
+        String sql = "SELECT * FROM  Salle ";
         
         try{
             Statement statement = session.createStatement();

@@ -4,7 +4,7 @@
  */
 package gui_admin.view.salle;
 
-import gui_admin.view.abonnement.*;
+
 import gui_util.ProPanel;
 
 /**
@@ -12,7 +12,9 @@ import gui_util.ProPanel;
  * @author DevJude
  */
 public class Look extends ProPanel{
-    public Look(){
-        super();
-    }
+
+
+    public Look() {
+        super();}
+        
 }

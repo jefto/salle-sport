@@ -13,7 +13,7 @@ import service.SalleService;
  * @author TCHAMIE
  */
 public class SalleController {
-    private SalleService service;
+    public SalleService service;
 
     public SalleController() {
         service = new SalleService();
