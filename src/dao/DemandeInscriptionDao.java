@@ -20,7 +20,6 @@ import java.util.List;
 import util.Connexion;
 
 public class DemandeInscriptionDao {
-    private ClientDao clientdao = new ClientDao();
     
     public void ajouter(DemandeInscription demande) {
         Connection session = Connexion.getSessionV2();
@@ -39,7 +38,7 @@ public class DemandeInscriptionDao {
     public DemandeInscription trouver(int id) {
         DemandeInscription demande = new DemandeInscription();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, dateDeDemande, dateDeTraitement, id_client FROM DemandeInscription WHERE id = " + id + ";";
+        String sql = "SELECT id_inscription, dateDeDemande, dateDeTraitement FROM DemandeInscription WHERE id_inscription = " + id + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -48,7 +47,6 @@ public class DemandeInscriptionDao {
                 demande.setId(rs.getInt(1));
                 demande.setDateDeDemande(rs.getTimestamp(2).toLocalDateTime());
                 demande.setDateDeTraitement(rs.getTimestamp(3).toLocalDateTime());
-                demande.setClient(clientdao.trouver(rs.getInt(4)));
             }
         } catch (SQLException e) {
             System.out.println("Erreur : " + e.getMessage());
@@ -62,8 +60,7 @@ public class DemandeInscriptionDao {
         String sql = "UPDATE DemandeInscription SET " +
                 "dateDeDemande = '" + demande.getDateDeDemande() + "', " +
                 "dateDeTraitement = '" + demande.getDateDeTraitement() + "', " +
-                "id_client = " + demande.getClient().getId() + " " +
-                "WHERE id = " + demande.getId() + ";";
+                "WHERE id_inscription = " + demande.getId() + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -75,7 +72,7 @@ public class DemandeInscriptionDao {
 
     public void supprimer(int id) {
         Connection session = Connexion.getSessionV2();
-        String sql = "DELETE FROM DemandeInscription WHERE id = " + id + ";";
+        String sql = "DELETE FROM DemandeInscription WHERE id_inscription = " + id + ";";
 
         try {
             Statement statement = session.createStatement();
@@ -88,7 +85,7 @@ public class DemandeInscriptionDao {
     public List<DemandeInscription> listerTout() {
         List<DemandeInscription> liste = new ArrayList<>();
         Connection session = Connexion.getSessionV2();
-        String sql = "SELECT id, dateDeDemande, dateDeTraitement, id_client FROM DemandeInscription;";
+        String sql = "SELECT id_inscription, dateDeDemande, dateDeTraitement FROM DemandeInscription;";
 
         try {
             Statement statement = session.createStatement();
@@ -98,7 +95,6 @@ public class DemandeInscriptionDao {
                 demande.setId(rs.getInt(1));
                 demande.setDateDeDemande(rs.getTimestamp(2).toLocalDateTime());
                 demande.setDateDeTraitement(rs.getTimestamp(3).toLocalDateTime());
-                demande.setClient(clientdao.trouver(rs.getInt(4)));
                 liste.add(demande);
             }
         } catch (SQLException e) {

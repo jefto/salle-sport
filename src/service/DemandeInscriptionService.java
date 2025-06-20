@@ -32,7 +32,7 @@ public class DemandeInscriptionService {
         dao.supprimer(id);
     }
 
-    public List<DemandeInscription> lister() {
+    public List<DemandeInscription> listerTous() {
         return dao.listerTout();
     }
 }

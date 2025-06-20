@@ -15,7 +15,7 @@ import util.Connexion;
 
 /**
  *
- * @author DevJude
+ * @author TCHAMIE
  */
 public class MoyenDePaiementDao {
     public void ajouter(MoyenDePaiement moyenDePaiement) {
